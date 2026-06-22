@@ -39,6 +39,48 @@
   }
   </script>
 
+  <!-- JSON-LD FAQ — для расширенных сниппетов в Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Что такое Бусти Алексея Антонова?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Это площадка с эксклюзивным контентом, сливами и бесплатными материалами. Все материалы публикуются в Telegram-канале и доступны без оплаты."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как получить доступ к материалам?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Достаточно подписаться на Telegram-канал @antonov_sliv_busty. Все материалы доступны бесплатно сразу после подписки."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Это действительно бесплатно?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, весь контент в канале полностью бесплатный. Никаких скрытых платежей или подписок."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как часто выходят новые материалы?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Новые материалы, лайфхаки и разборы публикуются ежедневно."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     * {
       margin: 0;
@@ -200,6 +242,67 @@
       color: #1a1a2e;
     }
 
+    /* ===== FAQ ===== */
+    .faq {
+      padding: 70px 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .faq h2 {
+      font-size: 1.8em;
+      text-align: center;
+      margin-bottom: 36px;
+      color: #1a1a2e;
+    }
+
+    .faq-item {
+      border: 1px solid #e9ecef;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      padding: 18px 24px;
+      font-size: 1.05em;
+      font-weight: 600;
+      color: #1a1a2e;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .faq-item summary:hover {
+      background: #f8f9fa;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.4em;
+      font-weight: 300;
+      color: #999;
+      transition: transform 0.2s;
+    }
+
+    .faq-item[open] summary::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      padding: 0 24px 18px;
+      font-size: 1em;
+      color: #555;
+      line-height: 1.7;
+    }
+
     /* ===== FOOTER ===== */
     footer {
       text-align: center;
@@ -286,6 +389,31 @@
 
   <!-- Projects -->
   
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Частые вопросы</h2>
+
+    <details class="faq-item">
+      <summary>Что такое Бусти Алексея Антонова?</summary>
+      <div class="faq-answer">Это площадка с&nbsp;эксклюзивным контентом, сливами и&nbsp;бесплатными материалами. Все материалы публикуются в&nbsp;Telegram-канале и&nbsp;доступны без оплаты.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Как получить доступ к материалам?</summary>
+      <div class="faq-answer">Достаточно подписаться на&nbsp;<a href="https://t.me/antonov_sliv_busty" target="_blank" rel="noopener" style="color:#e63946;text-decoration:none;font-weight:600">Telegram-канал</a>. Все материалы доступны бесплатно сразу после подписки.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Это действительно бесплатно?</summary>
+      <div class="faq-answer">Да, весь контент в&nbsp;канале полностью бесплатный. Никаких скрытых платежей или подписок.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Как часто выходят новые материалы?</summary>
+      <div class="faq-answer">Новые материалы, лайфхаки и&nbsp;разборы публикуются ежедневно.</div>
+    </details>
+  </section>
 
   <!-- CTA -->
   <section class="cta">
