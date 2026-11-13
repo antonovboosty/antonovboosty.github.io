@@ -1,0 +1,324 @@
+/* ============================================================
+   Алексей Антонов — Антонов Бусти · стили сайта
+   Тёмная минималистичная тема, один градиентный акцент
+   (оранжевый → розовый, в духе Boosty)
+   ============================================================ */
+
+:root {
+  --bg: #100e16;
+  --bg-alt: #17141f;
+  --border: #2a2634;
+  --card: rgba(255, 255, 255, 0.03);
+  --text: #f2eef9;
+  --text-muted: #a49bb6;
+  --accent-1: #ff6a3d;   /* оранжевый Boosty */
+  --accent-2: #ff2e77;   /* розовый */
+  --grad: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+  --radius: 16px;
+  --font-body: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scrollbar-color: #38323f transparent; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #38323f; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #443d4f; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { width: min(1040px, 100% - 40px); margin-inline: auto; }
+
+a { color: #ff7d9e; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ссылки внутри текста всегда подчёркнуты */
+.about-card a,
+.faq-item p a,
+.cta p a,
+footer a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* кнопки и пункты меню никогда не подчёркиваются */
+.btn, .brand, .site-nav a, .hero-sub a { text-decoration: none; }
+
+/* чтобы липкая шапка не перекрывала секции при переходе по якорям */
+section[id] { scroll-margin-top: 88px; }
+
+/* ---------------- ШАПКА ---------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(16, 14, 22, 0.82);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 16px 0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 800;
+  font-size: 1.02rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.brand:hover { text-decoration: none; }
+
+/* маленькая градиентная точка — единственный знак бренда в шапке */
+.brand::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--grad);
+  flex: none;
+}
+
+.site-nav { display: flex; gap: 24px; margin-left: auto; }
+.site-nav a {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.site-nav a:hover { color: var(--text); text-decoration: none; }
+
+/* ---------------- КНОПКИ ---------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--grad);
+  color: #fff;
+  padding: 12px 22px;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 12px rgba(255, 70, 110, 0.22);
+}
+.btn-primary:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(255, 70, 110, 0.3);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 12px 22px;
+  font-size: 0.95rem;
+}
+.btn-ghost:hover {
+  border-color: #3d3749;
+  background: var(--card);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-sm { padding: 10px 16px; font-size: 0.88rem; border-radius: 10px; }
+.btn-lg { padding: 15px 28px; font-size: 1.02rem; }
+.btn-xl { padding: 17px 34px; font-size: 1.08rem; border-radius: 14px; }
+
+.icon { width: 1.15em; height: 1.15em; flex: none; }
+
+/* ---------------- ГЛАВНЫЙ БЛОК (HERO) ---------------- */
+
+.hero { padding: 108px 0 84px; text-align: center; }
+
+.hero-inner { display: flex; flex-direction: column; align-items: center; }
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+h2 {
+  font-size: clamp(1.45rem, 3.5vw, 1.9rem);
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.hero-sub {
+  margin-top: 16px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.hero-sub a {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+  list-style: none;
+}
+.chips li {
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.hero-text {
+  margin-top: 26px;
+  max-width: 560px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+/* ---------------- СЕКЦИИ ---------------- */
+
+.section { padding: 76px 0; }
+.section-alt { background: var(--bg-alt); border-block: 1px solid var(--border); }
+
+.about-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(22px, 4vw, 40px);
+  max-width: 800px;
+}
+.about-card p + p { margin-top: 16px; }
+.about-card em { color: var(--text-muted); }
+
+/* ---------------- FAQ ---------------- */
+
+.faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 800px; }
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 22px;
+  transition: border-color 0.2s;
+}
+.faq-item[open] { border-color: rgba(255, 80, 120, 0.45); }
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.03rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: var(--accent-2);
+  transition: transform 0.2s;
+  flex: none;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+
+.faq-item p { margin-top: 12px; color: var(--text-muted); }
+
+/* ---------------- CTA ---------------- */
+
+.cta { text-align: center; }
+.cta-inner { display: flex; flex-direction: column; align-items: center; }
+.cta p { color: var(--text-muted); max-width: 520px; margin-bottom: 30px; font-size: 1.05rem; }
+
+/* ---------------- ПОДВАЛ ---------------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-alt);
+  padding: 26px 0;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------------- АНИМАЦИЯ ПОЯВЛЕНИЯ ---------------- */
+
+.section, .hero-inner { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.section.visible, .hero-inner.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .section, .hero-inner { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------------- АДАПТИВ ---------------- */
+
+@media (max-width: 720px) {
+  .site-nav { display: none; }              /* навигация скрывается, остаётся кнопка */
+  .header-inner { justify-content: space-between; gap: 14px; }
+  .brand { font-size: 0.98rem; }
+
+  .hero { padding: 72px 0 60px; }
+
+  .hero-actions .btn { width: 100%; }
+  .hero-text { font-size: 1rem; }
+
+  .section { padding: 56px 0; }
+  .faq-item summary { font-size: 0.98rem; }
+  .footer-inner { justify-content: center; text-align: center; }
+}
+
+@media (max-width: 420px) {
+  .hero-sub { font-size: 0.95rem; }
+}
